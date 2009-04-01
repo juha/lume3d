@@ -1,0 +1,183 @@
+<?xml version="1.0"?>
+<PanoSalado>
+	<layer id="Interface" url="UserInterface.swf" depth="1"/>
+	<layer id="PanoSalado" url="panorama.swf" depth="0">
+  <!--// parameter attributes set in the spaces element can be overridden in the individual space elements //-->
+		<spaces
+
+ 			onStart="loadSpace:qtvr_fullres"
+
+			cameraRetainsLastValues="false" 
+			cameraZoom="7"
+			cameraFocus="100"
+			cameraZoomIncrement="0.2"
+			cameraKeyIncrement="75"
+			cameraSensitivity="60"
+			cameraFriction="0.2"
+			cameraRestThreshold="0.0001"
+			cameraMinimumZoom="6"
+			cameraMaximumZoom="12"
+			
+			autorotator="false"
+			autorotatorIncrement="0.25"
+			autorotatorDelay="15000"
+			
+			dynamicQualityAdjustment="true"
+			
+			preciseOnAcceleration="true"
+			precisionOnAcceleration="4"
+			smoothOnAcceleration="false"
+			
+			preciseOnDeceleration="true"
+			precisionOnDeceleration="4"
+			smoothOnDeceleration="true"
+			
+			preciseAtRest="true"
+			precisionAtRest="1"
+			smoothAtRest="true"
+		>
+			<space id="lume_preview"
+				label="preview"
+				interactive="false"
+				segments="8"
+				transition="tween:currentSpace.viewport.alpha from 0 over 1.5 seconds using Expo.easeInOut"
+				onTransitionEnd="loadSpace:lume"
+			>
+				<sphere id="preview_pano">
+					<file>images/lume/0001.jpg</file>
+				</sphere>
+				
+			</space>
+
+			<space id="lume"
+				label="concert1"
+				interactive="true"
+				segments="16"
+				transition="tween:currentSpace.viewport.alpha from 0 over 1.5 seconds using Expo.easeIn"
+				onTransitionEnd="removeLastSpace"
+				smoothOnAcceleration="true"
+			>
+				<cube id="concert1_pano">
+					<file face="front">images/lume/0001.jpg</file>
+					<file face="right">images/lume/0004.jpg</file>
+					<file face="left">images/lume/0002.jpg</file>
+					<file face="top">images/lume/0006.jpg</file>
+					<file face="bottom">images/lume/0005.jpg</file>
+					<file face="back">images/lume/0003.jpg</file>
+				</cube>
+				<hotspot id="toConcert2" 
+					useHandCursor="true"
+					pan="-20" 
+					tilt="-10" 
+					segments="2"
+					oneSide="false"
+					smooth="true"
+					onClick="loadSpace:preview2"
+				>
+					<file>graphics/hotspot.png</file>
+				</hotspot>
+			</space>
+			<!--space id="preview2"
+label="preview2"
+				interactive="0"
+				cameraPan="60" 
+				cameraTilt="10" 
+				transition="tween:currentSpace.viewport.alpha from 0 over 1.5 seconds using Expo.easeIn"
+				onTransitionEnd="removeLastSpace;loadSpace:concert2"
+			>
+				<sphere id="preview_pano2">
+					<file>images/cube_concert_2/preview2.jpg</file>
+				</sphere>
+				
+			</space>
+
+			<space id="concert2"
+label="concert2"
+				interactive="true"
+				onTransitionEnd="removeLastSpace"
+				cameraPan="60" 
+				cameraTilt="10" 
+				smoothOnAcceleration="false"
+			>
+				<cube id="concert2_pano">
+					<file face="front">images/cube_concert_2/Concert_2_blend-flat-s_f.jpg</file>
+					<file face="right">images/cube_concert_2/Concert_2_blend-flat-s_r.jpg</file>
+					<file face="left">images/cube_concert_2/Concert_2_blend-flat-s_l.jpg</file>
+					<file face="top">images/cube_concert_2/Concert_2_blend-flat-s_u.jpg</file>
+					<file face="bottom">images/cube_concert_2/Concert_2_blend-flat-s_d.jpg</file>
+					<file face="back">images/cube_concert_2/Concert_2_blend-flat-s_b.jpg</file>
+				</cube>
+				<hotspot id="toConcert1" 
+					pan="80" 
+					tilt="5" 
+					segments="2"
+					oneSide="false"
+					smooth="true"
+					useHandCursor="true"
+					onClick="loadSpace:concert1"
+				>
+					<file>graphics/hotspot.png?1</file>
+				</hotspot>
+				<hotspot id="fun2" 
+					pan="10" 
+					tilt="0" 
+					segments="2"
+					oneSide="false"
+					smooth="true"
+					useHandCursor="true"
+					onClick="tween:allCameras.tilt to 0 over 1.0 seconds using Expo.easeOut;tween:allCameras.zoom to 11 over .5 seconds using Expo.easeOut;tween:allCameras.pan to 10 over 1.0 seconds using Expo.easeOut then do fun2.goForward"
+					goForward="tween:allCameras.roll to 10 over 1.0 seconds using Expo.easeOut then do fun2.goBack"
+					goBack="tween:allCameras.roll to -10 over 1.5 seconds using Expo.easeOut then do fun2.goHome;tween:allCameras.zoom to 8 over .5 seconds using Expo.easeOut"
+					goHome="tween:allCameras.roll to '10' over 0.5 seconds using Expo.easeOut"
+				>
+					<file>graphics/hotspot.png?1</file>
+				</hotspot>
+			</space-->
+<!--// add your own hotspots to the panoramas to complete the tour :) //-->
+			<!--space id="chagall"
+label="chagall"
+				interactive="true"
+				segments="16"
+				transition="tween:currentSpace.viewport.alpha from 0 over 1.5 seconds using Expo.easeIn"
+				onTransitionEnd="removeLastSpace"
+				smoothOnAcceleration="true"
+			>
+				<cylinder id="cylinder_chagall" segments="15"  autoFOV="true">
+					<file id="front">images/cyl_060702_chagallmosaic/060702_chagall_1f.jpg</file>
+				</cylinder>
+
+			</space>
+
+
+			<space id="goldengate"
+label="goldengate"
+				interactive="true"
+				cameraPan="60" 
+				cameraTilt="10" 
+				transition="tween:currentSpace.viewport.alpha from 0 over 1.5 seconds using Expo.easeIn"
+ 				cameraMinimumTilt="-30" cameraMaximumTilt="40"
+			>
+				<cylinder id="cylinder_goldengate" segments="15">
+					<file id="front">images/cyl_060702_GoldenGate/AS_GGfromSF_off_4.jpg</file>
+				</cylinder>
+		
+			</space-->
+
+<!--// QTVR //-->
+			<space id="qtvr_preview" label="qtvr-preview"
+				interactive="0" transition="tween:currentSpace.viewport.alpha from 0 over 3 seconds using Expo.easeInOut"
+				onTransitionEnd="loadSpace:qtvr_fullres">
+				<qtvr id="qtvr_preview_pano" applyCameraSettingsFromThisQTVR="true">
+					<mov>PSQTVRPreviewParse.php?mov=images/qtvr_lgphoto/360.mov</mov>
+				</qtvr>
+				
+			</space>
+			<space id="qtvr_fullres" label="qtvr"
+				interactive="0" transition="tween:currentSpace.viewport.alpha from 0 over 3 seconds using Expo.easeInOut">
+				<qtvr id="qtvr_fullres_pano" applyCameraSettingsFromThisQTVR="true">
+					<mov>PSQTVRParse.php?mov=images/qtvr_lgphoto/360.mov</mov>
+				</qtvr>
+			</space>
+		</spaces>
+	</layer>
+</PanoSalado>

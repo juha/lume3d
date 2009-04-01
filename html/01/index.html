@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>Lume 3D</title>
+	<link type="text/css" rel="stylesheet" href="../css/core.css" >
+</head>
+
+<body>
+    <div id="container">
+        <div id="header">
+            <div id="path">
+                <a href="../">Lume 3D</a> &gt; <a href="./">Ylälämpiö ja Galleria</a>
+            </div>
+            <div id="top-nav">
+                <h3>Vaihda huonetta</h3>
+                <ul>
+                    <li><a href="../01/">01. Ylälämpiö ja Galleria</a></li>
+                    <li><a href="../02/">02. Sampo-sali</a></li>
+                    <li>03. Studionäyttämö</li>
+                    <li>04. TV-studio</li>
+                    <li><a href="../05/">05. Elokuvastudio</a></li>
+                    <li>06. Elokuvateatterit</li>
+                    <li>07. Äänen jälkikäsittely</li>
+                    <li>08. Lavastamo ja fondimaalaamo</li>
+                    <li>K Ylälämpiö ja Galleria</li>
+                </ul>
+            </div>
+        </div>
+        <div id="content">
+            <h1>Ylälämpiö ja Galleria</h1>
+            <div id="content-flash"></div>
+        </div>´
+        <div id="sidebar">
+            <div id="side-nav">
+                <h3>Panoraamat</h3>
+                <ul>
+                    <li class="current"><a href="">Ensimmäinen</a></li>
+                    <li class="current"><a href="">Toinen</a></li>
+                </ul>
+                <h3>3D</h3>
+                <ul>
+                    <li class="current"><a href="">Ensimmäinen</a></li>
+                </ul>
+                <h3>Kuvia</h3>
+                <ul>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+        <div id="footer">...</div>
+    </div>
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/swfobject.js"></script>
+    <script type="text/javascript" src="../js/core.js"></script>
+    <script type="text/javascript">
+    var so = new SWFObject("ModuleLoader.swf?xml=panorama.xml", "content-flash", "580", "400", "9", "#000000"); 	
+    so.addParam("allowFullScreen","true");
+	so.addParam("allowScriptAccess","sameDomain");
+	so.write("content-flash");
+    </script>
+</body>
+</html>
