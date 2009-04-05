@@ -52,6 +52,8 @@ package
 			defaultCamera = new Camera3D();
 			addEventListener(Event.ENTER_FRAME, onEnterFrame);
 			
+                        parentDocument.debugText.text = 'startup';
+                        
                         light = new PointLight3D();
             
 			// set the initial frame time
@@ -65,6 +67,8 @@ package
 		
 		protected function onEnterFrame(event:Event):void 
 		{
+                        parentDocument.debugText.text = 'render';
+                        
 			// Calculate the time since the last frame
 			var thisFrame:Date = new Date();
 			var seconds:Number = (thisFrame.getTime() - lastFrame.getTime())/1000.0;

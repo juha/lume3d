@@ -78,7 +78,7 @@
 	</library_effects>
 	<library_images>
 		<image id="uv_face_cube_png-img" name="uv_face_cube_png-img">
-			<init_from>uv_face_cube_eioleolemassa.png</init_from>
+			<init_from>uv_face_cube.jpg</init_from>
 		</image>
 	</library_images>
 	<library_lights>

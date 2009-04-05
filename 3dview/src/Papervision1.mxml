@@ -13,11 +13,14 @@
 	<![CDATA[ 
 		public function creationComplete():void
 	    {
-			engineManager.startup();												
+	       engineManager.startup();												
 	    }
 	 ]]>
 	 </mx:Script>
 	 
-	 <mx:Button label="wheehee" bottom="10" right="10" />
+	 <mx:Panel bottom="10" right="10" width="200" height="200">
+		 <mx:Label text="Debug:" top="4" left="4" />
+		 <mx:Label id="debugText" text="" top="10" left="10" />
+	</mx:Panel>
 	
 </mx:Application>

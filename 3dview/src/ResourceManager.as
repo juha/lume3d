@@ -13,7 +13,7 @@ package
 		              return new XML(byteArray.readUTFBytes(byteArray.length));
 		      }();
 		
-		[Embed (source="/Users/lauri/Desktop/koulu/DVD2/lume3d/3dview/media/uv_face_cube.jpg")]
+		[Embed (source="/Users/lauri/Desktop/koulu/DVD2/lume3d/3dview/media/uv_face_cube.png")]
 		public static const SF02:Class;
         
 		public static const SF02_Tex:MovieMaterial = new MovieMaterial(new SF02());
