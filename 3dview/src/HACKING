@@ -1,0 +1,8 @@
+test phase: 
+compile:
+/Users/lauri/Desktop/flex_sdk_3/bin/mxmlc -source-path /Users/lauri/Desktop/papervision3d/as3/trunk/src -file-specs Papervision1.mxml -output colladatest.swf && open colladatest.swf
+
+notes:
+- the material element's ID inside the DAE file needs to be the same as in the material.addMaterial call
+  to get the texture
+
