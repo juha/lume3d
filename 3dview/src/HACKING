@@ -6,3 +6,7 @@ notes:
 - the material element's ID inside the DAE file needs to be the same as in the material.addMaterial call
   to get the texture
 
+- blender export(2.48): COLLADA 1.4
+    Select => Triangles, Disable Physics (optional), Use Relative Paths, Use UV Image Mats
+- when doing UV remember to use Relative Paths in the image loading phase
+

@@ -18,6 +18,6 @@
 	 ]]>
 	 </mx:Script>
 	 
-	 <mx:Button label="whee" />
+	 <mx:Button label="wheehee" bottom="10" right="10" />
 	
 </mx:Application>

@@ -4,11 +4,16 @@ package
 	import mx.collections.ArrayCollection;
 	import mx.core.Application;
 	import mx.core.UIComponent;
+    
 	import org.papervision3d.cameras.Camera3D;
 	import org.papervision3d.materials.utils.MaterialsList;
 	import org.papervision3d.render.BasicRenderEngine;
 	import org.papervision3d.scenes.Scene3D;
 	import org.papervision3d.view.Viewport3D;
+    
+        import org.papervision3d.lights.PointLight3D;
+        import org.papervision3d.objects.DisplayObject3D;
+        import org.papervision3d.objects.parsers.DAE;
 
 	public class EngineManager extends UIComponent
 	{
@@ -19,8 +24,12 @@ package
 		// Papervision scene
 		public var defaultScene:Scene3D = null;
 		// Papervision camera
-		public var defaultCamera:Camera3D = null;		
-		// a collection of the BaseObjects 
+		public var defaultCamera:Camera3D = null;
+        
+                private var universe:DisplayObject3D		
+	        private var light:PointLight3D;    
+            	
+                // a collection of the BaseObjects 
 		protected var baseObjects:ArrayCollection = new ArrayCollection();
 		// a collection where new BaseObjects are placed, to avoid adding items 
 		// to baseObjects while in the baseObjects collection while it is in a loop
@@ -31,14 +40,11 @@ package
 		// the last frame time 
 		protected var lastFrame:Date;
 		
-		public function EngineManager()
-		{
-			super();
-		}
+		public function EngineManager() { super(); }
 		
 		public function startup():void
 		{
-			// initialize the Papervision 3D engine components
+                        // initialize the Papervision 3D engine components
 			viewport = new Viewport3D(Application.application.height, Application.application.width, true); 
 			addChild(viewport);
 			renderer = new BasicRenderEngine();
@@ -46,12 +52,14 @@ package
 			defaultCamera = new Camera3D();
 			addEventListener(Event.ENTER_FRAME, onEnterFrame);
 			
+                        light = new PointLight3D();
+            
 			// set the initial frame time
 			lastFrame = new Date();
 			
 			// create a model to render to the screen
 			var material:MaterialsList = new MaterialsList();
-			material.addMaterial(ResourceManager.SF02_Tex, "sf-01");
+			material.addMaterial(ResourceManager.SF02_Tex, "uv_face_cube_png"); // "sf-01");
 			new MeshObject().startupModelObject(ResourceManager.Fighter1XML, material);
 		}
 		
