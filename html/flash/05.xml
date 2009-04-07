@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<PanoSalado>
+	<layer id="Interface" url="../flash/UserInterface.swf" depth="1"/>
+	<layer id="PanoSalado" url="../flash/panorama.swf" depth="0">
+  <!--// parameter attributes set in the spaces element can be overridden in the individual space elements //-->
+		<spaces
+
+ 			onStart="loadSpace:qtvr_fullres"
+
+			cameraRetainsLastValues="false" 
+			cameraZoom="7"
+			cameraFocus="100"
+			cameraZoomIncrement="0.2"
+			cameraKeyIncrement="75"
+			cameraSensitivity="60"
+			cameraFriction="0.2"
+			cameraRestThreshold="0.0001"
+			cameraMinimumZoom="6"
+			cameraMaximumZoom="12"
+			
+			autorotator="false"
+			autorotatorIncrement="0.25"
+			autorotatorDelay="15000"
+			
+			dynamicQualityAdjustment="true"
+			
+			preciseOnAcceleration="true"
+			precisionOnAcceleration="4"
+			smoothOnAcceleration="false"
+			
+			preciseOnDeceleration="true"
+			precisionOnDeceleration="4"
+			smoothOnDeceleration="true"
+			
+			preciseAtRest="true"
+			precisionAtRest="1"
+			smoothAtRest="true"
+		>
+			<space id="qtvr_preview" label="qtvr-preview"
+				interactive="0" transition="tween:currentSpace.viewport.alpha from 0 over 3 seconds using Expo.easeInOut"
+				onTransitionEnd="loadSpace:qtvr_fullres">
+				<qtvr id="qtvr_preview_pano" applyCameraSettingsFromThisQTVR="true">
+					<mov>../flash/PSQTVRPreviewParse.php?mov=qtvr/05.mov</mov>
+				</qtvr>
+				
+			</space>
+			<space id="qtvr_fullres" label="qtvr"
+				interactive="0" transition="tween:currentSpace.viewport.alpha from 0 over 3 seconds using Expo.easeInOut">
+				<qtvr id="qtvr_fullres_pano" applyCameraSettingsFromThisQTVR="true">
+					<mov>../flash/PSQTVRParse.php?mov=qtvr/05.mov</mov>
+				</qtvr>
+			</space>
+		</spaces>
+	</layer>
+</PanoSalado>
