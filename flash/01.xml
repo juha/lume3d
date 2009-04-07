@@ -34,21 +34,17 @@
 			precisionAtRest="1"
 			smoothAtRest="true"
 		>
-			<space id="preview"
-				label="preview"
-				interactive="false"
-				segments="8"
+			<space id="preview" label="preview"
+				interactive="false" segments="8"
 				transition="tween:currentSpace.viewport.alpha from 0 over 1.5 seconds using Expo.easeInOut"
-				onTransitionEnd="loadSpace:concert1"
+				onTransitionEnd="removeLastSpace;loadSpace:concert1"
 			>
 				<sphere id="preview_pano">
 					<file>../flash/images/01/preview.jpg</file>
 				</sphere>
 			</space>
-			<space id="concert1"
-				label="concert1"
-				interactive="true"
-				segments="16"
+			<space id="concert1" label="concert1"
+				interactive="true" segments="16"
 				transition="tween:currentSpace.viewport.alpha from 0 over 1.5 seconds using Expo.easeIn"
 				onTransitionEnd="removeLastSpace"
 				smoothOnAcceleration="true"
