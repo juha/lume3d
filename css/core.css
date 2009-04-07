@@ -54,6 +54,10 @@ div#content ul.room-list {
     margin-left: 200px;
 }
 
+div#content-flash {
+    min-height: 400px;
+}
+
 div#content-flash p {
     margin-top: 8em;
 }
