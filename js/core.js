@@ -45,6 +45,6 @@ $(document).ready(function () {
     $("#content-flash").swf();
     $("#sidebar a.toggle").toggleTarget();
     $("#content-body").click(function () {
-        $(this).hide();
+        $("a#content-body-toggle").click();
     });
 });
