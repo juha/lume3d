@@ -22,9 +22,6 @@ jQuery.fn.swf = function (xml) {
         so.addParam("allowFullScreen","true");
     	so.addParam("allowScriptAccess","sameDomain");
     	so.write(this.attr("id"));
-    	
-    	var f = document.getElementById("flash-el");
-    	alert(f.moduleLoader)
     }
 };
 
