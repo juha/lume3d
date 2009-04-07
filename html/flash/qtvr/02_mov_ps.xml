@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+				<tiledCube 
+cameraMinimumPan='' cameraMaximumPan='' cameraMinimumTilt='' cameraMaximumTilt='' cameraMinimumZoom='1' cameraMaximumZoom='4.25' cameraPan='-138.6' cameraTilt='2.2' cameraZoom='3.035' >
+					<tile face='front' x_offset='0' y_offset='0'>../flash/PSQTVRParse.php?mov=qtvr/02.mov&amp;action=tile&amp;face=front&amp;x_ofs=0&amp;y_ofs=0</tile>
+					<tile face='right' x_offset='0' y_offset='0'>../flash/PSQTVRParse.php?mov=qtvr/02.mov&amp;action=tile&amp;face=right&amp;x_ofs=0&amp;y_ofs=0</tile>
+					<tile face='back' x_offset='0' y_offset='0'>../flash/PSQTVRParse.php?mov=qtvr/02.mov&amp;action=tile&amp;face=back&amp;x_ofs=0&amp;y_ofs=0</tile>
+					<tile face='left' x_offset='0' y_offset='0'>../flash/PSQTVRParse.php?mov=qtvr/02.mov&amp;action=tile&amp;face=left&amp;x_ofs=0&amp;y_ofs=0</tile>
+					<tile face='up' x_offset='0' y_offset='0'>../flash/PSQTVRParse.php?mov=qtvr/02.mov&amp;action=tile&amp;face=up&amp;x_ofs=0&amp;y_ofs=0</tile>
+					<tile face='down' x_offset='0' y_offset='0'>../flash/PSQTVRParse.php?mov=qtvr/02.mov&amp;action=tile&amp;face=down&amp;x_ofs=0&amp;y_ofs=0</tile>
+				</tiledCube>

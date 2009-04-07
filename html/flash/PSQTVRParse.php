@@ -481,7 +481,7 @@ if ($action!="tile") {
       $imgsrc = $filename."?mov=".$file."&amp;action=tile&amp;face=".$face."&amp;x_ofs=".$fx_ofs."&amp;y_ofs=".$fy_ofs;
 
       
-      $xml .= "\t\t\t\t\t<tile face='".$face."' x_offset='".$x_offset."' y_offset='".$y_offset."'>".$imgsrc."</tile>\n";
+      $xml .= "\t\t\t\t\t<tile face='".$face."' x_offset='".$x_offset."' y_offset='".$y_offset."'>../flash/".$imgsrc."</tile>\n";
       
       $JpegOfs[$face][$fx_ofs][$fy_ofs]["start"] = $stco["tile".($panoelem+1)];
       $JpegOfs[$face][$fx_ofs][$fy_ofs]["length"] = $stsz["tile".($panoelem+1)];
