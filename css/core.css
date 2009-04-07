@@ -24,6 +24,7 @@ div#header div#top-nav {
     position: absolute;
     text-align: right;
     padding: 0 10px 10px 10px;
+    z-index: 10;
     right: 0;
     top: 0;
 }
