@@ -1,11 +1,9 @@
-<?xml version="1.0"?>
 <PanoSalado>
 	<layer id="Interface" url="../flash/UserInterface.swf" depth="1"/>
 	<layer id="PanoSalado" url="../flash/panorama.swf" depth="0">
   <!--// parameter attributes set in the spaces element can be overridden in the individual space elements //-->
 		<spaces
-
- 			onStart="loadSpace:qtvr_fullres"
+ 			onStart="loadSpace:concert1"
 
 			cameraRetainsLastValues="false" 
 			cameraZoom="7"
@@ -36,19 +34,33 @@
 			precisionAtRest="1"
 			smoothAtRest="true"
 		>
-			<space id="qtvr_preview" label="qtvr-preview"
-				interactive="0" transition="tween:currentSpace.viewport.alpha from 0 over 3 seconds using Expo.easeInOut"
-				onTransitionEnd="loadSpace:qtvr_fullres">
-				<qtvr id="qtvr_preview_pano" applyCameraSettingsFromThisQTVR="true">
-					<mov>../flash/PSQTVRPreviewParse.php?mov=qtvr/01.mov</mov>
-				</qtvr>
-				
+			<space id="preview"
+				label="preview"
+				interactive="false"
+				segments="8"
+				transition="tween:currentSpace.viewport.alpha from 0 over 1.5 seconds using Expo.easeInOut"
+				onTransitionEnd="loadSpace:concert1"
+			>
+				<sphere id="preview_pano">
+					<file>../flash/images/01/preview.jpg</file>
+				</sphere>
 			</space>
-			<space id="qtvr_fullres" label="qtvr"
-				interactive="0" transition="tween:currentSpace.viewport.alpha from 0 over 3 seconds using Expo.easeInOut">
-				<qtvr id="qtvr_fullres_pano" applyCameraSettingsFromThisQTVR="true">
-					<mov>../flash/PSQTVRParse.php?mov=qtvr/01.mov</mov>
-				</qtvr>
+			<space id="concert1"
+				label="concert1"
+				interactive="true"
+				segments="16"
+				transition="tween:currentSpace.viewport.alpha from 0 over 1.5 seconds using Expo.easeIn"
+				onTransitionEnd="removeLastSpace"
+				smoothOnAcceleration="true"
+			>
+				<cube id="concert1_pano">
+					<file face="front">../flash/images/01/front.jpg</file>
+					<file face="right">../flash/images/01/right.jpg</file>
+					<file face="left">../flash/images/01/left.jpg</file>
+					<file face="top">../flash/images/01/top.jpg</file>
+					<file face="bottom">../flash/images/01/bottom.jpg</file>
+					<file face="back">../flash/images/01/back.jpg</file>
+				</cube>
 			</space>
 		</spaces>
 	</layer>
