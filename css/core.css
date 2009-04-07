@@ -1,0 +1,92 @@
+body {
+    font: 12px Arial, Helvetica, sans-serif;
+    background: #fff;
+    padding: 0;
+    margin: 0;
+}
+
+div#container {
+    margin: 24px auto;
+    width: 800px;
+}
+
+div#header {
+    background: #cfcfcf;
+    position: relative;
+    padding: 10px;
+}
+
+div#header div#path {
+}
+
+div#header div#top-nav {
+    background: #cfcfcf;
+    position: absolute;
+    text-align: right;
+    padding: 0 10px 10px 10px;
+    right: 0;
+    top: 0;
+}
+
+div#header div#top-nav h3 {
+    margin: 0.5em 0 0 0;
+    cursor: pointer;
+}
+
+div#header div#top-nav ul {
+    background: #cfcfcf;
+    margin: 1em 0 0 0;
+    text-align: left;
+    display: none;
+}
+
+div#content {
+    padding: 10px;
+    width: 580px;
+    float: left;
+}
+
+div#content ul.room-list {
+    margin-left: 200px;
+}
+
+div#content-flash p {
+    margin-top: 8em;
+}
+
+div.wide div#content {
+    padding: 10px 0;
+    width: auto;
+    float: none;
+}
+
+div#sidebar {
+    background: #f5f5f5;
+    margin: 0 0 10px 0;
+    padding: 10px;
+    width: 180px;
+    float: left;
+}
+
+div.wide div#sidebar {
+    margin: 10px 10px 0 0;
+    position: absolute;
+    left: 780px;
+    float: none;
+    top: 80px;
+}
+
+h1 {
+    background: url(../images/alpha-white.png);
+    font: bold 3em/1em Helvetica, Arial, sans-serif;
+    letter-spacing: -1px;
+    position: absolute;
+    padding: 10px;
+    color: #000;
+}
+
+div#footer {
+    background: #cfcfcf;    
+    padding: 10px;
+    clear: left;
+}
