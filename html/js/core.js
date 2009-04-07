@@ -8,13 +8,17 @@ jQuery.fn.navigation = function () {
 };
 
 jQuery.fn.swf = function (xml) {
-    var so = new SWFObject("01.swf?xml=01.xml", "content-flash", "580", "400", "9", "#000000"); 	
-    so.addParam("allowFullScreen","true");
-	so.addParam("allowScriptAccess","sameDomain");
-	so.write(this.attr("id"));
+    if (!this.length) return;
+    var href = this.find("a").attr("href");
+    if (href) {
+        var so = new SWFObject(href, "content-flash", "800", "400", "9", "#000000"); 	
+        so.addParam("allowFullScreen","true");
+    	so.addParam("allowScriptAccess","sameDomain");
+    	so.write(this.attr("id"));
+    }
 };
 
 $(document).ready(function () {
     $("#top-nav").navigation();
-//    $("#content-flash").swf();
+    $("#content-flash").swf();
 });

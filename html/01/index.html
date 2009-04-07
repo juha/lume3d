@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <div id="container">
+    <div id="container" class="wide">
         <div id="header">
             <div id="path">
                 <a href="../">Lume 3D</a> &gt; <a href="./">Ylälämpiö ja Galleria</a>
@@ -31,8 +31,12 @@
         </div>
         <div id="content">
             <h1>Ylälämpiö ja Galleria</h1>
-            <div id="content-flash"></div>
-        </div>´
+            <div id="content-flash">
+                <p>
+                    Nähdäksesi tämän <a href="../flash/ModuleLoader.swf?xml=../flash/01.xml">tarvitset</a> JavaScript-tuen.
+                </p>
+            </div>
+        </div>
         <div id="sidebar">
             <div id="side-nav">
                 <h3>Panoraamat</h3>
@@ -55,11 +59,5 @@
     <script type="text/javascript" src="../js/jquery.js"></script>
     <script type="text/javascript" src="../js/swfobject.js"></script>
     <script type="text/javascript" src="../js/core.js"></script>
-    <script type="text/javascript">
-    var so = new SWFObject("ModuleLoader.swf?xml=panorama.xml", "content-flash", "580", "400", "9", "#000000"); 	
-    so.addParam("allowFullScreen","true");
-	so.addParam("allowScriptAccess","sameDomain");
-	so.write("content-flash");
-    </script>
 </body>
 </html>
