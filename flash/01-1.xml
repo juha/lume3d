@@ -1,0 +1,63 @@
+<PanoSalado>
+	<layer id="Interface" url="../flash/UserInterface.swf" depth="1"/>
+	<layer id="PanoSalado" url="../flash/panorama.swf" depth="0">
+  <!--// parameter attributes set in the spaces element can be overridden in the individual space elements //-->
+		<spaces
+ 			onStart="loadSpace:concert1"
+
+			cameraRetainsLastValues="false" 
+			cameraZoom="7"
+			cameraFocus="100"
+			cameraZoomIncrement="0.2"
+			cameraKeyIncrement="75"
+			cameraSensitivity="60"
+			cameraFriction="0.2"
+			cameraRestThreshold="0.0001"
+			cameraMinimumZoom="6"
+			cameraMaximumZoom="12"
+			
+			autorotator="false"
+			autorotatorIncrement="0.25"
+			autorotatorDelay="15000"
+			
+			dynamicQualityAdjustment="true"
+			
+			preciseOnAcceleration="true"
+			precisionOnAcceleration="4"
+			smoothOnAcceleration="false"
+			
+			preciseOnDeceleration="true"
+			precisionOnDeceleration="4"
+			smoothOnDeceleration="true"
+			
+			preciseAtRest="true"
+			precisionAtRest="1"
+			smoothAtRest="true"
+		>
+			<space id="preview" label="preview"
+				interactive="false" segments="8"
+				transition="tween:currentSpace.viewport.alpha from 0 over 1.5 seconds using Expo.easeInOut"
+				onTransitionEnd="removeLastSpace;loadSpace:concert1"
+			>
+				<sphere id="preview_pano">
+					<file>../flash/images/01/preview.jpg</file>
+				</sphere>
+			</space>
+			<space id="concert1" label="concert1"
+				interactive="true" segments="16"
+				transition="tween:currentSpace.viewport.alpha from 0 over 1.5 seconds using Expo.easeIn"
+				onTransitionEnd="removeLastSpace"
+				smoothOnAcceleration="true"
+			>
+				<cube id="concert1_pano">
+					<file face="front">../flash/images/01-1/front.gif</file>
+					<file face="right">../flash/images/01-1/right.gif</file>
+					<file face="left">../flash/images/01-1/left.gif</file>
+					<file face="top">../flash/images/01-1/top.gif</file>
+					<file face="bottom">../flash/images/01-1/bottom.gif</file>
+					<file face="back">../flash/images/01-1/back.gif</file>
+				</cube>
+			</space>
+		</spaces>
+	</layer>
+</PanoSalado>
