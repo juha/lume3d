@@ -10,6 +10,7 @@ div#container {
     margin: 24px auto;
     max-width: 960px;
     padding: 0 20px;
+    overflow: hidden;
 }
 
 div#header {
@@ -104,7 +105,7 @@ div.wide div#sidebar {
     background: url(../images/alpha-white.png);
     margin: 10px 10px 0 0;
     position: absolute;
-    right: 10px;
+    right: -10px;
     float: none;
     top: 60px;
 }

@@ -14,14 +14,36 @@ jQuery.fn.navigation = function () {
     );
 };
 
-jQuery.fn.swf = function (xml) {
+jQuery.fn.sidebar = function () {
+    var start = parseInt(this.css("right"));
+    this.toggle(
+        function () {
+            $(this).animate({right: -160}, 250);
+        },
+        function () {
+            $(this).animate({right: start}, 250);
+        }
+    );
+};
+
+jQuery.fn.changeFlash = function (id) {
+    this.click(function () {
+        if ($("#content-body").css("display") == "block")
+            $("a#content-body-toggle").click();
+        $(this).swf(id);
+        return false;
+    });
+};
+
+
+jQuery.fn.swf = function (id) {
     if (!this.length) return;
-    var href = this.find("a").attr("href");
+    var href = this.attr("href");
     if (href) {
         var so = new SWFObject(href, "flash-el", "100%", "600", "9", "#ffffff"); 	
         so.addParam("allowFullScreen","true");
     	so.addParam("allowScriptAccess","sameDomain");
-    	so.write(this.attr("id"));
+    	so.write(id);
     }
 };
 
@@ -42,7 +64,9 @@ jQuery.fn.toggleTarget = function () {
 
 $(document).ready(function () {
     $("#top-nav").navigation();
-    $("#content-flash").swf();
+    $("#content-flash a").swf("content-flash");
+    $("#sidebar").sidebar();
+    $("#sidebar a.flash").changeFlash("content-flash");
     $("#sidebar a.toggle").toggleTarget();
     $("#content-body").click(function () {
         $("a#content-body-toggle").click();
