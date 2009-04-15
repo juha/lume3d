@@ -1,17 +1,17 @@
 package
 {
-        import flash.utils.ByteArray;
+    import flash.utils.ByteArray;
         
-        import mx.core.Application;
-	import org.papervision3d.materials.utils.MaterialsList;
-	import org.papervision3d.materials.MovieMaterial;
-        import org.papervision3d.objects.DisplayObject3D;
-	import org.papervision3d.objects.parsers.Collada;
+    import mx.core.Application;
+    import org.papervision3d.materials.utils.MaterialsList;
+    import org.papervision3d.materials.MovieMaterial;
+    import org.papervision3d.objects.DisplayObject3D;
+    import org.papervision3d.objects.parsers.Collada;
         
         
 	public class Model extends Collada {
                 
-                // Embed the resources so that we don't rely on external files. Also makes testing easier
+            // Embed the resources so that we don't rely on external files. Also makes testing easier
 	        // since you don't need to either tweak flash-access rules or have a webserver
 	        [Embed (source="../media/simple_cube.dae", mimeType="application/octet-stream")]
 	        public static const meshData:Class;
@@ -40,11 +40,11 @@ package
                         super(meshXML, materialList);
                 }
                 
-		public function draw():void {
-			// this.yaw(yaw);
-			// this.roll(roll);
-			// this.pitch(pitch);
-		}
+                public function draw():void {
+                    // this.yaw(yaw);
+                    // this.roll(roll);
+                    // this.pitch(pitch);
+                }
 
 	}
 }
