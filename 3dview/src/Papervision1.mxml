@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	layout="absolute" 
+	xmlns:ns1="*"
+	applicationComplete="creationComplete(event)"
+	backgroundGradientAlphas ="[0.2, 1.0]"
+	backgroundGradientColors="[0xeeeeee, 0xffffff]"
+	backgroundColor="0xffffff"
+	width="960"
+	height="600">
+	
+	<ns1:EngineManager x="0" y="0" width="100%" height="100%" id="engineManager"/>
+	
+	
+	<mx:Grid>
+		<mx:GridRow>
+			<mx:GridItem> </mx:GridItem> 
+			<mx:GridItem>
+                <mx:Button buttonDown="moveUp()" label="up" />
+			</mx:GridItem>
+			<mx:GridItem> </mx:GridItem>
+		</mx:GridRow>
+		<mx:GridRow>
+            <mx:GridItem>
+                <mx:Button buttonDown="moveLeft()" label="left" />
+            </mx:GridItem> 
+            <mx:GridItem> </mx:GridItem>
+            <mx:GridItem>
+                <mx:Button buttonDown="moveRight()" label="right" />
+            </mx:GridItem>
+        </mx:GridRow>
+        <mx:GridRow>
+            <mx:GridItem> </mx:GridItem> 
+            <mx:GridItem>
+                <mx:Button buttonDown="moveDown()" label="down" />
+            </mx:GridItem>
+            <mx:GridItem> </mx:GridItem>
+        </mx:GridRow>
+	</mx:Grid>
+	
+	<mx:Panel> 
+	   <mx:Text id="xcoord" />
+	   <mx:Text id="ycoord" />
+	   <mx:Text id="zcoord" />
+	</mx:Panel>
+	
+	<mx:Script>
+	<![CDATA[ 
+        import flash.events.MouseEvent;
+	    
+	    public var mouseDown:Boolean = false;
+		public var prevMouseX:Number = 0;
+		public var prevMouseY:Number = 0;
+		public var moveAmount:Number = 20;
+		public var zoomAmount:Number = 20;
+		
+		public function onMouseWheel(evt:MouseEvent):void {
+		    if(evt.delta > 0) { // wheel up
+		        zoomIn();
+		    } else if(evt.delta < 0) {
+		        zoomOut();
+		    }
+		}
+		
+		public function onMouseDown(evt:MouseEvent):void {
+		    mouseDown = true;
+		    prevMouseX = this.mouseX;
+		    prevMouseY = this.mouseY;
+		}
+		
+		public function onMouseUp(evt:MouseEvent):void {
+		    mouseDown = false;
+		}
+		
+		public function onMouseMove(evt:MouseEvent):void {
+		    if(mouseDown) {
+		        if(this.mouseX < prevMouseX) {
+		            moveRight();
+		        } else if(this.mouseX > prevMouseX) {
+		            moveLeft();
+		        }
+		        if(this.mouseY < prevMouseY) {
+		            moveUp();
+		        } else if(this.mouseY > prevMouseY) {
+		            moveDown();
+		        }
+		
+		    }
+		    prevMouseX = this.mouseX;
+		    prevMouseY = this.mouseY;
+		}
+			   
+	    
+	    public function creationComplete(evt:Object):void {
+            addEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
+            addEventListener(MouseEvent.MOUSE_UP, onMouseUp);
+            addEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
+            addEventListener(MouseEvent.MOUSE_WHEEL, onMouseWheel);
+            trace('FLEX: calling engineManager.init');
+            engineManager.xcoord = xcoord;
+            engineManager.ycoord = ycoord;
+            engineManager.zcoord = zcoord;
+            
+            engineManager.init();									
+	    }
+	    
+	    
+	    public function moveRight():void {   
+            trace('FLEX: moveRight');
+            engineManager.defaultCamera.moveRight(moveAmount);
+        }
+        public function moveLeft():void {
+            trace('FLEX: moveLeft');
+            engineManager.defaultCamera.moveLeft(moveAmount);
+        }
+        
+        public function moveUp():void {
+            engineManager.defaultCamera.moveUp(moveAmount);
+        }
+        public function moveDown():void {
+            engineManager.defaultCamera.moveDown(moveAmount);
+        }
+        
+        public function zoomOut():void {
+            engineManager.defaultCamera.moveBackward(zoomAmount);
+        }
+        public function zoomIn():void {
+            engineManager.defaultCamera.moveForward(zoomAmount);
+        }
+        
+	 ]]>
+	 </mx:Script>
+	
+</mx:Application>
