@@ -3,18 +3,18 @@
 	<layer id="PanoSalado" url="../flash/panorama.swf" depth="0">
   <!--// parameter attributes set in the spaces element can be overridden in the individual space elements //-->
 		<spaces
- 			onStart="loadSpace:concert1"
+ 			onStart="loadSpace:gallery"
 
 			cameraRetainsLastValues="false" 
-			cameraZoom="7"
+			cameraZoom="6"
 			cameraFocus="100"
 			cameraZoomIncrement="0.2"
 			cameraKeyIncrement="75"
 			cameraSensitivity="60"
 			cameraFriction="0.2"
 			cameraRestThreshold="0.0001"
-			cameraMinimumZoom="6"
-			cameraMaximumZoom="12"
+			cameraMinimumZoom="5"
+			cameraMaximumZoom="10"
 			
 			autorotator="false"
 			autorotatorIncrement="0.25"
@@ -43,19 +43,19 @@
 					<file>../flash/images/01/preview.jpg</file>
 				</sphere>
 			</space>
-			<space id="concert1" label="concert1"
+			<space id="gallery" label="gallery"
 				interactive="true" segments="16"
 				transition="tween:currentSpace.viewport.alpha from 0 over 1.5 seconds using Expo.easeIn"
 				onTransitionEnd="removeLastSpace"
 				smoothOnAcceleration="true"
 			>
-				<cube id="concert1_pano">
-					<file face="front">../flash/images/01-1/front.gif</file>
-					<file face="right">../flash/images/01-1/right.gif</file>
-					<file face="left">../flash/images/01-1/left.gif</file>
-					<file face="top">../flash/images/01-1/top.gif</file>
-					<file face="bottom">../flash/images/01-1/bottom.gif</file>
-					<file face="back">../flash/images/01-1/back.gif</file>
+				<cube id="gallery_pano">
+					<file face="front">../flash/images/01-1/front.jpg</file>
+					<file face="right">../flash/images/01-1/right.jpg</file>
+					<file face="left">../flash/images/01-1/left.jpg</file>
+					<file face="top">../flash/images/01-1/top.jpg</file>
+					<file face="bottom">../flash/images/01-1/bottom.jpg</file>
+					<file face="back">../flash/images/01-1/back.jpg</file>
 				</cube>
 			</space>
 		</spaces>

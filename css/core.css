@@ -66,6 +66,38 @@ div#content div#frontpage ul.room-list {
     margin-left: 350px;
 }
 
+div#content div#frontpage ul.room-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+div#content div#frontpage ul.room-list li {
+    border-left: solid 5px #ccc;
+    padding: 0 0 0 1em;
+    margin-bottom: 1em;
+}
+
+div#content div#frontpage ul.room-list li#room-01 {
+    border-color: #;
+}
+
+div#content div#frontpage ul.room-list li#room-02 {
+    border-color: #;
+}
+
+div#content div#frontpage ul.room-list li#room-05 {
+    border-color: #;
+}
+
+div#content div#frontpage ul.room-list li h3,
+div#content div#frontpage ul.room-list li p {
+    margin: 0 0 0.25em 0;
+}
+
+div#content div#frontpage ul.room-list li.disabled {
+    color: #ccc;
+}
+
 div#content-flash {
     min-height: 500px;
 }
