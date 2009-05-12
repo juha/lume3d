@@ -3,7 +3,7 @@
 	<layer id="PanoSalado" url="../flash/panorama.swf" depth="0">
   <!--// parameter attributes set in the spaces element can be overridden in the individual space elements //-->
 		<spaces
- 			onStart="loadSpace:concert1"
+ 			onStart="loadSpace:sampo"
 
 			cameraRetainsLastValues="false" 
 			cameraZoom="7"
@@ -45,15 +45,18 @@
 					<file>../flash/images/02/preview.jpg</file>
 				</sphere>
 			</space>
-			<space id="concert1"
-				label="concert1"
+			<space id="sampo"
+				label="sampo"
 				interactive="true"
 				segments="16"
+				cameraPan="105" cameraTilt="0" 
+				cameraMinimumPan="0" cameraMaximumPan="190" 
+				cameraMinimumTilt="-35" cameraMaximumTilt="25" 
 				transition="tween:currentSpace.viewport.alpha from 0 over 1.5 seconds using Expo.easeIn"
 				onTransitionEnd="removeLastSpace"
 				smoothOnAcceleration="true"
 			>
-				<cube id="concert1_pano">
+				<cube id="sampo_pano">
 					<file face="front">../flash/images/02/front.jpg</file>
 					<file face="right">../flash/images/02/right.jpg</file>
 					<file face="left">../flash/images/02/left.jpg</file>
