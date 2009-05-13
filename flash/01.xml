@@ -3,7 +3,7 @@
 	<layer id="PanoSalado" url="../flash/panorama.swf" depth="0">
   <!--// parameter attributes set in the spaces element can be overridden in the individual space elements //-->
 		<spaces
- 			onStart="loadSpace:concert1"
+ 			onStart="loadSpace:preview"
 
 			cameraRetainsLastValues="false" 
 			cameraZoom="7"
@@ -36,8 +36,8 @@
 		>
 			<space id="preview" label="preview"
 				interactive="false" segments="8"
-				transition="tween:currentSpace.viewport.alpha from 0 over 1.5 seconds using Expo.easeInOut"
-				onTransitionEnd="removeLastSpace;loadSpace:concert1"
+				transition="tween:currentSpace.viewport.alpha from 0 over 3 seconds using Expo.easeInOut then do preview.onTransitionEnd"
+				onTransitionEnd="loadSpace:concert1"
 			>
 				<sphere id="preview_pano">
 					<file>../flash/images/01/preview.jpg</file>
