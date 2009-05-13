@@ -78,27 +78,24 @@ package
                         zcoord.text = defaultCamera.z;
                         
                         if(defaultCamera.z > 1100) {
-                                // north 
-                                setTransparentWall(model.northWall);
+                                model.setTransparentWall(model.northWalls);
                         } else if(defaultCamera.z < -1100) {
-                                // south
-                                setTransparentWall(model.southWall);
+                                model.setTransparentWall(model.southWalls);
                         } else if(defaultCamera.x < 0) {
-                                // east
-                                setTransparentWall(model.eastWall);
+                                model.setTransparentWall(model.eastWalls);
                         } else if(defaultCamera.x > 0) {
-                                // west
-                                setTransparentWall(model.westWall);
+                                model.setTransparentWall(model.westWalls);
                         }
+                        
+                        if(defaultCamera.y > 1100) {
+                                model.onCameraUp();
+                        } else if(defaultCamera.y < -1100) {
+                                model.onCameraDown();
+                        } 
                         
                         // render the scene
                         renderer.renderScene(defaultScene, defaultCamera, viewport);
                 }
                 
-                protected function setTransparentWall(wallElem:DisplayObject3D):void {
-                        model.southWall.alpha = 1.0;    model.northWall.alpha = 1.0; 
-                        model.eastWall.alpha = 1.0;     model.westWall.alpha = 1.0;
-                        wallElem.alpha = 0.1;
-                }
         }
 }

@@ -52,8 +52,8 @@
 	    public var mouseDown:Boolean = false;
 		public var prevMouseX:Number = 0;
 		public var prevMouseY:Number = 0;
-		public var moveAmount:Number = 20;
-		public var zoomAmount:Number = 20;
+		public var moveAmount:Number = 50;
+		public var zoomAmount:Number = 40;
 		
 		public function onMouseWheel(evt:MouseEvent):void {
 		    if(evt.delta > 0) { // wheel up

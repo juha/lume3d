@@ -40,33 +40,67 @@ package
 		
                 // these need to correspond to the sections of the building so that they can be turned transparent
                 // depending on camera position
-                public var northWall:DisplayObject3D = null;
-                public var southWall:DisplayObject3D = null;
-                public var eastWall:DisplayObject3D = null;
-                public var westWall:DisplayObject3D = null;
-                public var ceiling:DisplayObject3D = null;
-                public var floor:DisplayObject3D = null;
+                public var northWalls:Array = null;
+                public var southWalls:Array = null;
+                public var eastWalls:Array = null;
+                public var westWalls:Array = null;
+                public var ceilings:Array = null;
+                public var floors:Array = null;
                 
         
                 public function Model() {
                         super(meshXML, materialList);
                         // collect important bits
-                        southWall = getChildByName('elokuvastudio').getChildByName('south_wall');
-                        northWall = getChildByName('elokuvastudio').getChildByName('north_wall');
-                        westWall = getChildByName('elokuvastudio').getChildByName('north_wall');
-                        eastWall = getChildByName('elokuvastudio').getChildByName('north_wall');
-                        ceiling = getChildByName('elokuvastudio').getChildByName('north_wall');
-                        floor = getChildByName('elokuvastudio').getChildByName('north_wall');
-                        
-                        southWall.useOwnContainer = true;
-                        northWall.useOwnContainer = true;
-                        westWall.useOwnContainer = true;
-                        eastWall.useOwnContainer = true;
-                        ceiling.useOwnContainer = true;
-                        floor.useOwnContainer = true;
+                        // DisplayObject3D
+                        southWalls = loadChildrenWithPrefix('south_wall');
+                        northWalls = loadChildrenWithPrefix('north_wall');
+                        eastWalls = loadChildrenWithPrefix('east_wall');
+                        westWalls = loadChildrenWithPrefix('west_wall');
+                        ceilings = loadChildrenWithPrefix('ceiling');
+                        floors = loadChildrenWithPrefix('floor');
+                        // getChildByName('elokuvastudio').getChildByName('north_wall');
+                        // southWall.useOwnContainer = true;
                 }
                 
                 public function draw():void {
+                }
+                
+                public function loadChildrenWithPrefix(prefix:string):Array {
+                        var a:Array = new Array();
+                        recurseChildren(prefix, this, a);
+                        return a;
+                }
+                
+                private function recurseChildren(prefix:string, curParent, curArray:Array) {
+                       for(i in children) {
+                                var child = children[i];
+                                trace(i + ": " + child);
+                                if( i.substr(0, prefix.length) == prefix) {
+                                        trace("match!");
+                                        curArray.push(child);
+                                        child.useOwnContainer = true;
+                                }
+                                curArray = curArray.concat( recurseChildren(prefix, child, curArray) );
+                        }
+                        return curArray;
+                }
+                
+                public function setTransparentWall(wallElems:Array):void {
+                        for(i in southWalls) { southWalls[i].alpha = 1.0; }
+                        for(i in northWalls) { northWalls[i].alpha = 1.0; }
+                        for(i in westWalls)  { westWalls[i].alpha = 1.0; }
+                        for(i in eastWalls)  { eastWalls[i].alpha = 1.0; }
+                        for(i in wallElems) { wallElems[i].alpha = 0.1; }
+                }
+                
+                public function onCameraUp():void {
+                        for(i in floors) { floors[i].alpha = 1.0; }
+                        for(i in ceilings) { ceilings[i].alpha = 0.1; }
+                }
+                
+                public function onCameraDown():void {
+                        for(i in ceilings) { ceilings[i].alpha = 1.0; }
+                        for(i in floors)   { floors[i].alpha = 0.1; }
                 }
 
 	}
