@@ -61,6 +61,7 @@ div#content {
 }
 
 div#content div#frontpage {
+    background: transparent url(../images/taik.gif) no-repeat 100% 100%;
     overflow: hidden;
 }
 
@@ -86,15 +87,15 @@ div#content div#frontpage ul.room-list li {
 }
 
 div#content div#frontpage ul.room-list li#room-01 {
-    border-color: #;
+    border-color: #f6d935;
 }
 
 div#content div#frontpage ul.room-list li#room-02 {
-    border-color: #;
+    border-color: #828481;
 }
 
 div#content div#frontpage ul.room-list li#room-05 {
-    border-color: #;
+    border-color: #4b6542;
 }
 
 div#content div#frontpage ul.room-list li h3,
