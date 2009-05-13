@@ -45,6 +45,7 @@
 			</space>
 			<space id="concert1" label="concert1"
 				interactive="true" segments="16"
+				cameraMinimumTilt="-35" cameraMaximumTilt="35" 
 				transition="tween:currentSpace.viewport.alpha from 0 over 1.5 seconds using Expo.easeIn"
 				onTransitionEnd="removeLastSpace"
 				smoothOnAcceleration="true"
