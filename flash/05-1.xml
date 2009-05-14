@@ -6,14 +6,14 @@
  			onStart="loadSpace:preview"
 
 			cameraRetainsLastValues="false" 
-			cameraZoom="6"
+			cameraZoom="5"
 			cameraFocus="100"
 			cameraZoomIncrement="0.2"
 			cameraKeyIncrement="75"
 			cameraSensitivity="60"
 			cameraFriction="0.2"
 			cameraRestThreshold="0.0001"
-			cameraMinimumZoom="5"
+			cameraMinimumZoom="4"
 			cameraMaximumZoom="10"
 			
 			autorotator="false"
@@ -45,7 +45,7 @@
 			</space>
 			<space id="leffastudio" label="leffastudio"
 				interactive="true" segments="16" 
-				cameraPan="85" cameraTilt="0" 
+				cameraPan="-90" cameraTilt="0" 
 				cameraMinimumTilt="-45" cameraMaximumTilt="30" 
 				transition="tween:currentSpace.viewport.alpha from 0 over 1.5 seconds using Expo.easeIn"
 				onTransitionEnd="removeLastSpace"
