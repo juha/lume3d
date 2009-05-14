@@ -52,12 +52,12 @@
 				smoothOnAcceleration="true"
 			>
 				<cube id="leffastudio_pano">
-					<file face="front">../flash/images/05-1/front.jpg</file>
-					<file face="right">../flash/images/05-1/right.jpg</file>
-					<file face="left">../flash/images/05-1/left.jpg</file>
-					<file face="top">../flash/images/05-1/top.jpg</file>
-					<file face="bottom">../flash/images/05-1/bottom.jpg</file>
-					<file face="back">../flash/images/05-1/back.jpg</file>
+					<file face="front">../flash/images/05-3/front.jpg</file>
+					<file face="right">../flash/images/05-3/right.jpg</file>
+					<file face="left">../flash/images/05-3/left.jpg</file>
+					<file face="top">../flash/images/05-3/top.jpg</file>
+					<file face="bottom">../flash/images/05-3/bottom.jpg</file>
+					<file face="back">../flash/images/05-3/back.jpg</file>
 				</cube>
 			</space>
 		</spaces>
