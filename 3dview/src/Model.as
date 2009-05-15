@@ -12,7 +12,7 @@ package
                 
                 // Embed the resources so that we don't rely on external files. Also makes testing easier
 	        // since you don't need to either tweak flash-access rules or have a webserver
-	        [Embed (source="../media/elokuvastudio.dae", mimeType="application/octet-stream")]
+	        [Embed (source="../media/elokuvastudio_export.dae", mimeType="application/octet-stream")]
 	        public static const meshData:Class;
 	        
 	        public static const meshXML:XML = function():XML { 
@@ -20,13 +20,37 @@ package
 	                      return new XML(byteArray.readUTFBytes(byteArray.length));
 	              }();
 	        
-	        [Embed (source="../media/uv_face_cube.png")]
-	        public static const materialData:Class;
-                // transparent
-                public static const material:MovieMaterial = new MovieMaterial(new materialData, true);
-                material.smooth = true;
-                // material.doubleSided = true;
-                material.updateBitmap();
+	        [Embed (source="../media/textures/wall_texture.png")]
+	        public static const wallMaterialData:Class;
+                [Embed (source="../media/textures/floor_texture.png")]
+                public static const floorMaterialData:Class;
+                [Embed (source="../media/textures/electricity_texture.png")]
+                public static const electricityMaterialData:Class;
+                [Embed (source="../media/textures/door_texture.png")]
+                public static const doorMaterialData:Class;
+                [Embed (source="../media/textures/metal_texture.png")]
+                public static const metalMaterialData:Class;
+                [Embed (source="../media/textures/text_bg_texture.png")]
+                public static const textBgMaterialData:Class;
+                
+                public static const wallMaterial:MovieMaterial = new MovieMaterial(new wallMaterialData, true);
+                wallMaterial.smooth = true;
+                wallMaterial.updateBitmap();
+                public static const floorMaterial:MovieMaterial = new MovieMaterial(new floorMaterialData, true);
+                floorMaterial.smooth = true;
+                floorMaterial.updateBitmap();
+                public static const electricityMaterial:MovieMaterial = new MovieMaterial(new electricityMaterialData, true);
+                electricityMaterial.smooth = true;
+                electricityMaterial.updateBitmap();
+                public static const doorMaterial:MovieMaterial = new MovieMaterial(new doorMaterialData, true);
+                doorMaterial.smooth = true;
+                doorMaterial.updateBitmap();
+                public static const metalMaterial:MovieMaterial = new MovieMaterial(new metalMaterialData, true);
+                metalMaterial.smooth = true;
+                metalMaterial.updateBitmap();
+                public static const textBgMaterial:MovieMaterial = new MovieMaterial(new textBgMaterialData, true);
+                textBgMaterial.smooth = true;
+                textBgMaterial.updateBitmap();
             
 	        public static var materialList:MaterialsList = new MaterialsList();
                 
@@ -35,7 +59,13 @@ package
                 // in the mesh information (so in other words the library_materials bit of the collada is discarded)
 	        // materialList.addMaterial(material, "uv_face_cube_jpg-Material002"); 
 	                                               
-	        materialList.addMaterial(material, "matsku");
+	        materialList.addMaterial(wallMaterial, "wall");
+                materialList.addMaterial(floorMaterial, "floor");
+                materialList.addMaterial(electricityMaterial, "electricity");
+                materialList.addMaterial(doorMaterial, "door");
+                materialList.addMaterial(metalMaterial, "metal");
+                materialList.addMaterial(textBgMaterial, "textBg");
+                
                 protected var model:DisplayObject3D = null;
 		
                 // these need to correspond to the sections of the building so that they can be turned transparent
@@ -65,15 +95,16 @@ package
                 public function draw():void {
                 }
                 
-                public function loadChildrenWithPrefix(prefix:string):Array {
+                public function loadChildrenWithPrefix(prefix:String):Array {
                         var a:Array = new Array();
                         recurseChildren(prefix, this, a);
                         return a;
                 }
                 
-                private function recurseChildren(prefix:string, curParent, curArray:Array) {
-                       for(i in children) {
-                                var child = children[i];
+                private function recurseChildren(prefix:String, curParent:DisplayObject3D, curArray:Array):Array {
+                       trace("recourse children for "+prefix); 
+                       for(var i:String in curParent.children) {
+                                var child:DisplayObject3D = curParent.children[i];
                                 trace(i + ": " + child);
                                 if( i.substr(0, prefix.length) == prefix) {
                                         trace("match!");
@@ -86,7 +117,7 @@ package
                 }
                 
                 public function setTransparentWall(wallElems:Array):void {
-                        for(i in southWalls) { southWalls[i].alpha = 1.0; }
+                        for(var i:String in southWalls) { southWalls[i].alpha = 1.0; }
                         for(i in northWalls) { northWalls[i].alpha = 1.0; }
                         for(i in westWalls)  { westWalls[i].alpha = 1.0; }
                         for(i in eastWalls)  { eastWalls[i].alpha = 1.0; }
@@ -94,13 +125,21 @@ package
                 }
                 
                 public function onCameraUp():void {
-                        for(i in floors) { floors[i].alpha = 1.0; }
+                        for(var i:String in floors) { floors[i].alpha = 1.0; }
                         for(i in ceilings) { ceilings[i].alpha = 0.1; }
                 }
                 
                 public function onCameraDown():void {
-                        for(i in ceilings) { ceilings[i].alpha = 1.0; }
+                        for(var i:String in ceilings) { ceilings[i].alpha = 1.0; }
                         for(i in floors)   { floors[i].alpha = 0.1; }
+                }
+                
+                public function onShow(elems:Array):void {
+                        for(var i:String in elems) { elems[i].alpha = 1.0; }
+                }
+                
+                public function onHide(elems:Array):void {
+                        for(var i:String in elems) { elems[i].alpha = 0.1; }
                 }
 
 	}

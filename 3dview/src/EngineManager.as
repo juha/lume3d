@@ -8,6 +8,7 @@ package
         import org.papervision3d.render.BasicRenderEngine;
         import org.papervision3d.scenes.Scene3D;
         import org.papervision3d.view.Viewport3D;
+        import org.papervision3d.core.clipping.FrustumClipping;
     
         import org.papervision3d.lights.PointLight3D;
         import org.papervision3d.objects.DisplayObject3D;
@@ -55,19 +56,22 @@ package
                         viewport = new Viewport3D(Application.application.height, Application.application.width, true); 
                         addChild(viewport);
                         renderer = new BasicRenderEngine();
+                        renderer.clipping = new FrustumClipping(FrustumClipping.NEAR);
                         defaultScene = new Scene3D();
-                        defaultCamera = new Camera3D(60, 10, 5000, true, true);
+                        defaultCamera = new Camera3D(10, 60, 5000, false, false);
+                        // defaultCamera.useCulling = true;
                         addEventListener(Event.ENTER_FRAME, draw);
                         light = new PointLight3D();
                         // set the initial frame time
                         lastFrame = new Date();
                         model = new Model();
+                        model.scale = 0.2;
                         defaultScene.addChild(model);
-                        defaultCamera.moveBackward(200);
-                        defaultCamera.moveUp(100);
-                        trace( 'EngineManager: model.childrenList' );
-                        trace( model.getChildByName('elokuvastudio').childrenList() );
-                        trace( 'EngineManager: model.childrenList ends' );
+                        defaultCamera.moveBackward(2000);
+                        defaultCamera.moveUp(1000);
+                        // trace( 'EngineManager: model.childrenList' );
+                        // trace( model.getChildByName('elokuvastudio').childrenList() );
+                        // trace( 'EngineManager: model.childrenList ends' );
                 }
                 
                 protected function draw(event:Event):void {
@@ -77,7 +81,7 @@ package
                         ycoord.text = defaultCamera.y;
                         zcoord.text = defaultCamera.z;
                         
-                        if(defaultCamera.z > 1100) {
+                        /*if(defaultCamera.z > 1100) {
                                 model.setTransparentWall(model.northWalls);
                         } else if(defaultCamera.z < -1100) {
                                 model.setTransparentWall(model.southWalls);
@@ -91,7 +95,7 @@ package
                                 model.onCameraUp();
                         } else if(defaultCamera.y < -1100) {
                                 model.onCameraDown();
-                        } 
+                        } */
                         
                         // render the scene
                         renderer.renderScene(defaultScene, defaultCamera, viewport);
