@@ -1,5 +1,5 @@
 <PanoSalado>
-	<layer id="Interface" url="../flash/UserInterface.swf" depth="1"/>
+	<layer id="Interface" url="../flash/UserInterface.swf?1" depth="1"/>
 	<layer id="PanoSalado" url="../flash/panorama.swf" depth="0">
   <!--// parameter attributes set in the spaces element can be overridden in the individual space elements //-->
 		<spaces
@@ -37,13 +37,13 @@
 			<space id="preview" label="preview"
 				interactive="false" segments="8"
 				transition="tween:currentSpace.viewport.alpha from 0 over 3 seconds using Expo.easeInOut then do preview.onTransitionEnd"
-				onTransitionEnd="removeLastSpace;loadSpace:leffastudio"
+				onTransitionEnd="removeLastSpace;loadSpace:panorama"
 			>
 				<sphere id="preview_pano">
 					<file>../flash/images/01/preview.jpg</file>
 				</sphere>
 			</space>
-			<space id="leffastudio" label="leffastudio"
+			<space id="panorama" label="panorama"
 				interactive="true" segments="16" 
 				cameraPan="85" cameraTilt="0" 
 				cameraMinimumTilt="-45" cameraMaximumTilt="30" 
@@ -51,13 +51,89 @@
 				onTransitionEnd="removeLastSpace"
 				smoothOnAcceleration="true"
 			>
-				<cube id="leffastudio_pano">
+				<cube id="panorama_pano">
 					<file face="front">../flash/images/05/front.jpg</file>
 					<file face="right">../flash/images/05/right.jpg</file>
 					<file face="left">../flash/images/05/left.jpg</file>
 					<file face="top">../flash/images/05/top.jpg</file>
 					<file face="bottom">../flash/images/05/bottom.jpg</file>
 					<file face="back">../flash/images/05/back.jpg</file>
+				</cube>
+			</space>
+
+			<space id="3d" label="3d"
+				interactive="true" segments="16" 
+				cameraPan="-90" cameraTilt="0" 
+				cameraMinimumTilt="-45" cameraMaximumTilt="30" 
+    			cameraZoom="5" cameraMinimumZoom="4" cameraMaximumZoom="8"
+				transition="tween:currentSpace.viewport.alpha from 0 over 1.5 seconds using Expo.easeIn"
+				onTransitionEnd="removeLastSpace"
+				smoothOnAcceleration="true"
+			>
+				<cube id="3d_pano">
+					<file face="front">../flash/images/05-1/front.jpg</file>
+					<file face="right">../flash/images/05-1/right.jpg</file>
+					<file face="left">../flash/images/05-1/left.jpg</file>
+					<file face="top">../flash/images/05-1/top.jpg</file>
+					<file face="bottom">../flash/images/05-1/bottom.jpg</file>
+					<file face="back">../flash/images/05-1/back.jpg</file>
+				</cube>
+			</space>
+
+			<space id="3d-1" label="3d-1"
+				interactive="true" segments="16" 
+				cameraPan="-90" cameraTilt="0" 
+				cameraMinimumTilt="-45" cameraMaximumTilt="30" 
+    			cameraZoom="5" cameraMinimumZoom="4" cameraMaximumZoom="8"
+				transition="tween:currentSpace.viewport.alpha from 0 over 1.5 seconds using Expo.easeIn"
+				onTransitionEnd="removeLastSpace"
+				smoothOnAcceleration="true"
+			>
+				<cube id="3d-1_pano">
+					<file face="front">../flash/images/05-2/front.jpg</file>
+					<file face="right">../flash/images/05-2/right.jpg</file>
+					<file face="left">../flash/images/05-2/left.jpg</file>
+					<file face="top">../flash/images/05-2/top.jpg</file>
+					<file face="bottom">../flash/images/05-2/bottom.jpg</file>
+					<file face="back">../flash/images/05-2/back.jpg</file>
+				</cube>
+			</space>
+
+			<space id="3d-2" label="3d-2"
+				interactive="true" segments="16" 
+				cameraPan="-90" cameraTilt="0" 
+				cameraMinimumTilt="-45" cameraMaximumTilt="30" 
+    			cameraZoom="5" cameraMinimumZoom="4" cameraMaximumZoom="8"
+				transition="tween:currentSpace.viewport.alpha from 0 over 1.5 seconds using Expo.easeIn"
+				onTransitionEnd="removeLastSpace"
+				smoothOnAcceleration="true"
+			>
+				<cube id="3d-2_pano">
+					<file face="front">../flash/images/05-3/front.jpg</file>
+					<file face="right">../flash/images/05-3/right.jpg</file>
+					<file face="left">../flash/images/05-3/left.jpg</file>
+					<file face="top">../flash/images/05-3/top.jpg</file>
+					<file face="bottom">../flash/images/05-3/bottom.jpg</file>
+					<file face="back">../flash/images/05-3/back.jpg</file>
+				</cube>
+			</space>
+
+			<space id="3d-3" label="3d-3"
+				interactive="true" segments="16" 
+				cameraPan="-90" cameraTilt="0" 
+				cameraMinimumTilt="-45" cameraMaximumTilt="30" 
+    			cameraZoom="5" cameraMinimumZoom="4" cameraMaximumZoom="8"
+				transition="tween:currentSpace.viewport.alpha from 0 over 1.5 seconds using Expo.easeIn"
+				onTransitionEnd="removeLastSpace"
+				smoothOnAcceleration="true"
+			>
+				<cube id="3d-3_pano">
+					<file face="front">../flash/images/05-4/front.jpg</file>
+					<file face="right">../flash/images/05-4/right.jpg</file>
+					<file face="left">../flash/images/05-4/left.jpg</file>
+					<file face="top">../flash/images/05-4/top.jpg</file>
+					<file face="bottom">../flash/images/05-4/bottom.jpg</file>
+					<file face="back">../flash/images/05-4/back.jpg</file>
 				</cube>
 			</space>
 		</spaces>

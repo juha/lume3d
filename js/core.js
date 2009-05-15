@@ -1,3 +1,5 @@
+var swf;
+
 jQuery.fn.navigation = function () {
     var h3 = this.find("h3");
     var ul = this.find("ul");
@@ -26,24 +28,31 @@ jQuery.fn.sidebar = function () {
     );
 };
 
-jQuery.fn.changeFlash = function (id) {
+jQuery.fn.changeSpace = function (id) {
     this.click(function () {
         if ($("#content-body").css("display") == "block")
-            $("a#content-body-toggle").click();
-        $(this).swf(id);
+            $("a#content-body-toggle").click();        
+        var swf = document["flash-el"];
+        var space = $(this).attr("href");
+        if (space.split("#").length > 1)
+            swf.loadSpace(space.split("#")[1]);
         return false;
     });
 };
 
+function alertFromFlash(txt) {
+    alert(txt);
+}
 
 jQuery.fn.swf = function (id) {
     if (!this.length) return;
     var href = this.attr("href");
     if (href) {
-        var so = new SWFObject(href, "flash-el", "100%", "600", "9", "#ffffff"); 	
-        so.addParam("allowFullScreen","true");
-    	so.addParam("allowScriptAccess","sameDomain");
-    	so.write(id);
+        var swf = new SWFObject(href, "flash-el", "100%", "600", "9", "#ffffff"); 	
+        //swf.setProxy(null, 'flash/swfobject_js_gateway.swf')
+    	swf.addParam("allowScriptAccess","always");
+        swf.addParam("allowFullScreen","true");
+    	swf.write(id);
     }
 };
 
@@ -66,7 +75,7 @@ $(document).ready(function () {
     $("#top-nav").navigation();
     $("#content-flash a").swf("content-flash");
     $("#sidebar").sidebar();
-    $("#sidebar a.flash").changeFlash("content-flash");
+    $("#sidebar a.flash").changeSpace("content-flash");
     $("#sidebar a.toggle").toggleTarget();
     $("#content-body").click(function () {
         $("a#content-body-toggle").click();
