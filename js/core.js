@@ -57,6 +57,8 @@ jQuery.fn.changeSpace = function () {
                 }, 500)
             }
         }
+        if (space != "3d")
+            $("input[name='3d']").attr("checked", "");
         $("#sidebar li.current").removeClass("current");
         $(this).parents("li").addClass("current");
         return false;

@@ -204,7 +204,7 @@ div#sidebar ul li.current a, div#sidebar ul li.current label {
     color: #000;
 }
 
-div#sidebar ul li a:hover {
+div#sidebar ul li:hover {
     background: url(../images/alpha-white-b.png);
 }
 
