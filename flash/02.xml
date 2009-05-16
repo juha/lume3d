@@ -39,14 +39,14 @@
 				interactive="false"
 				segments="8"
 				transition="tween:currentSpace.viewport.alpha from 0 over 3 seconds using Expo.easeInOut then do preview.onTransitionEnd"
-				onTransitionEnd="loadSpace:sampo"
+				onTransitionEnd="loadSpace:panorama"
 			>
 				<sphere id="preview_pano">
 					<file>../flash/images/01/preview.jpg</file>
 				</sphere>
 			</space>
-			<space id="sampo"
-				label="sampo"
+			<space id="panorama"
+				label="panorama"
 				interactive="true"
 				segments="16"
 				cameraPan="105" cameraTilt="0" 

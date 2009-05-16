@@ -37,13 +37,13 @@
 			<space id="preview" label="preview"
 				interactive="false" segments="8"
 				transition="tween:currentSpace.viewport.alpha from 0 over 3 seconds using Expo.easeInOut then do preview.onTransitionEnd"
-				onTransitionEnd="loadSpace:concert1"
+				onTransitionEnd="loadSpace:panorama"
 			>
 				<sphere id="preview_pano">
 					<file>../flash/images/01/preview.jpg</file>
 				</sphere>
 			</space>
-			<space id="concert1" label="concert1"
+			<space id="panorama" label="panorama"
 				interactive="true" segments="16"
 				cameraMinimumTilt="-35" cameraMaximumTilt="35" 
 				transition="tween:currentSpace.viewport.alpha from 0 over 1.5 seconds using Expo.easeIn"
