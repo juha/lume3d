@@ -52,6 +52,7 @@ jQuery.fn.swf = function (id) {
         //swf.setProxy(null, 'flash/swfobject_js_gateway.swf')
     	swf.addParam("allowScriptAccess","always");
         swf.addParam("allowFullScreen","true");
+        swf.addParam("wmode", "opaque");
     	swf.write(id);
     }
 };
