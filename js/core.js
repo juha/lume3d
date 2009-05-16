@@ -28,21 +28,69 @@ jQuery.fn.sidebar = function () {
     );
 };
 
-jQuery.fn.changeSpace = function (id) {
+jQuery.fn.changeSpace = function () {
+    var currentContainer = "#content-flash";
+    
     this.click(function () {
         if ($("#content-body").css("display") == "block")
-            $("a#content-body-toggle").click();        
-        var swf = document["flash-el"];
+            $("a#content-body-toggle").click();
+        
         var space = $(this).attr("href");
-        if (space.split("#").length > 1)
-            swf.loadSpace(space.split("#")[1]);
+        var container = "#content-flash";
+        if (space == "#content-images")
+            container = space;
+        
+        if (container != currentContainer) {
+            $(currentContainer).hide();//css({position: "absolute"}).animate({opacity: 0, display: "none"}, 1000);//, null, function () { $(this).hide();});
+            $(container).show();//.css({position: "static", opacity: 0}).animate({opacity: 1, display: "block"}, 1000);            
+            currentContainer = container;
+        }
+        
+        if (space != container) {
+            var swf = window["flash-el"] || document["flash-el"];
+            space = space.split("#")[1];
+            try {
+                swf.loadSpace(space);
+            } catch (e) {
+                window.setTimeout(function () {
+                    swf.loadSpace(space);
+                }, 500)
+            }
+        }
+        $("#sidebar li.current").removeClass("current");
+        $(this).parents("li").addClass("current");
         return false;
     });
 };
 
-function alertFromFlash(txt) {
-    alert(txt);
-}
+jQuery.fn.toggleFromSpace = function () {
+    this.click(function () {
+        var el = $(this);
+        var value = el.val();
+        var checked = el.attr("checked");
+        
+        if (value == "content-body") {
+            var target = $("#"+ value);
+            if (target.css("display") == "block")
+                $("#"+ value).hide();
+            else
+                $("#"+ value).show();
+        }
+        else {
+            if (!el.parents("li").hasClass("current"))
+                el.parents("li").find("a").click();
+            
+            var name = el.attr("name");
+            var space = name;
+            $("input[name='" + name + "']").each(function () {
+                if ($(this).attr("checked"))
+                    space = (space != name) ? space.replace("-1", "-3") : $(this).val();
+            });
+            var swf = window["flash-el"] || document["flash-el"];
+            swf.loadSpace(space);
+        }
+    });
+};
 
 jQuery.fn.swf = function (id) {
     if (!this.length) return;
@@ -75,10 +123,11 @@ jQuery.fn.toggleTarget = function () {
 $(document).ready(function () {
     $("#top-nav").navigation();
     $("#content-flash a").swf("content-flash");
-    $("#sidebar").sidebar();
-    $("#sidebar a.flash").changeSpace("content-flash");
-    $("#sidebar a.toggle").toggleTarget();
-    $("#content-body").click(function () {
-        $("a#content-body-toggle").click();
+    //$("#sidebar").sidebar();
+    $("#sidebar a").changeSpace();
+    $("#sidebar input").toggleFromSpace();
+    $("#content").click(function () {
+        var el = $("input#content-body-toggle");
+        if (el.attr("checked")) el.click();
     });
 });
