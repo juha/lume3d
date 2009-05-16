@@ -107,9 +107,33 @@ div#content div#frontpage ul.room-list li.disabled {
     color: #ccc;
 }
 
-div#content-flash {
-    min-height: 500px;
+div#content-flash, div#content-images {
+    min-height: 600px;
 }
+
+div#content-images {
+    display: none;
+}
+
+div#content-images ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+div#content-images ul li {
+    background: #ccc;
+    padding: 10px;
+    margin: 10px;
+    float: left;
+}
+
+div#content-images ul li img {
+    margin: 10px auto;
+    display: block;
+    width: 50px;
+}
+
 
 div#content-flash p {
     margin-top: 8em;
@@ -136,9 +160,8 @@ div#content-body div.column {
 
 div#sidebar {
     background: #f5f5f5;
-    margin: 0 0 10px 0;
-    padding: 10px;
-    width: 180px;
+    margin: 0 0 20px 0;
+    width: 200px;
     float: right;
 }
 
@@ -146,9 +169,49 @@ div.wide div#sidebar {
     background: url(../images/alpha-white.png);
     margin: 10px 10px 0 0;
     position: absolute;
-    right: -10px;
+    width: 180px;
+    right: 10px;
     float: none;
     top: 60px;
+}
+
+div#sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+div#sidebar ul li {
+    padding: 0;
+    margin: 0;
+}
+
+div#sidebar ul li.separate {
+    border-top: solid 5px #ccc;
+}
+
+div#sidebar ul li h3 {
+    margin: 0;
+}
+
+div#sidebar ul li a {
+    text-decoration: none;
+    padding: 10px 20px;
+    display: block;
+}
+
+div#sidebar ul li.current a, div#sidebar ul li.current label {
+    color: #000;
+}
+
+div#sidebar ul li a:hover {
+    background: url(../images/alpha-white-b.png);
+}
+
+div#sidebar ul li div label {
+    padding: 5px 20px;
+    display: block;
+    color: #333;
 }
 
 h1 {
