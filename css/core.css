@@ -115,24 +115,24 @@ div#content-flash {
     background: #f1f1f1;
 }
 
-div#content-images {
+div#content-imagess {
     display: none;
 }
 
-div#content-images ul {
+div#content-imagess ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
 }
 
-div#content-images ul li {
+div#content-imagess ul li {
     background: #ccc;
     padding: 10px;
     margin: 10px;
     float: left;
 }
 
-div#content-images ul li img {
+div#content-imagess ul li img {
     margin: 10px auto;
     display: block;
     width: 50px;
@@ -230,3 +230,15 @@ div#footer {
     padding: 10px;
     clear: left;
 }
+
+#the-image { min-height: 600px;}
+#the-image img { width: 960px;}
+#content-images ul { background: url(../images/alpha-white.png); list-style-type: none; margin: 0; padding: 0 10px 0 20px; width: 100%; position: absolute; bottom: 30px; }
+#content-images ul li{ display:block; width:80px; height:80px; overflow:hidden; float:left; margin: 10px 10px 10px 0;}
+#content-images ul li a{ display:none}
+#content-images ul li div{ position:absolute;display:none;top:0;left:180px}
+#content-images ul li div img{ cursor:pointer}
+#content-images ul li.active div img, #content-images ul li.active div{display:block}
+#content-images ul li img.thumb{cursor:pointer;top:auto;left:auto;display:block;width:auto;height:auto}
+#content-images ul li .caption{display:block;padding-top:.5em}
+* html .galleria li div span{width:400px} /* MSIE bug */
