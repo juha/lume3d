@@ -56,7 +56,7 @@ jQuery.fn.changeSpace = function () {
             } catch (e) {
                 window.setTimeout(function () {
                     swf.loadSpace(space);
-                }, 500)
+                }, 1000)
             }
         }
         if (space != "3d")
