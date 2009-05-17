@@ -115,27 +115,8 @@ div#content-flash {
     background: #f1f1f1;
 }
 
-div#content-imagess {
+div#content-images {
     display: none;
-}
-
-div#content-imagess ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-div#content-imagess ul li {
-    background: #ccc;
-    padding: 10px;
-    margin: 10px;
-    float: left;
-}
-
-div#content-imagess ul li img {
-    margin: 10px auto;
-    display: block;
-    width: 50px;
 }
 
 div#content-flash p {
