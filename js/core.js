@@ -46,6 +46,7 @@ jQuery.fn.changeSpace = function () {
             $(container).show();//.css({position: "static", opacity: 0}).animate({opacity: 1, display: "block"}, 1000);            
             currentContainer = container;
             if (space == "#content-images") {
+                $("#the-image").html("");
                 var loaded = false;
                 $("#content-images ul").galleria({
                     clickNext : true,
