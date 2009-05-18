@@ -39,13 +39,42 @@ jQuery.fn.changeSpace = function () {
         var container = "#content-flash";
         if (space == "#content-images") {
             container = space;
-            $("#content-images ul img:first").click();
         }
         
         if (container != currentContainer) {
             $(currentContainer).hide();//css({position: "absolute"}).animate({opacity: 0, display: "none"}, 1000);//, null, function () { $(this).hide();});
             $(container).show();//.css({position: "static", opacity: 0}).animate({opacity: 1, display: "block"}, 1000);            
             currentContainer = container;
+            if (space == "#content-images") {
+                var loaded = false;
+                $("#content-images ul").galleria({
+                    clickNext : true,
+                    history : false,
+                    insert : "#the-image",
+                    onImage   : function(image,caption,thumb) {
+                		if(! ($.browser.mozilla && navigator.appVersion.indexOf("Win")!=-1) ) {
+                			image.css("display","none").fadeIn(1000);
+                		}
+                		caption.css("display","none").fadeIn(1000);
+            			var _li = thumb.parents("li");
+            			_li.siblings().children("img.selected").fadeTo(500,0.3);
+            			thumb.fadeTo("fast", 1).addClass("selected");
+            			image.attr("title","Seuraava kuva >>");
+            		},
+            		onThumb : function(thumb) {
+            			var _li = thumb.parents("li");
+            			var _fadeTo = _li.is(".active") ? "1" : "0.3";
+            			thumb.css({display:"none",opacity:_fadeTo}).fadeIn(1500);
+            			thumb.hover(
+            				function() { thumb.fadeTo("fast",1); },
+            				function() { _li.not(".active").children("img").fadeTo("fast",0.3); }
+            			)
+            			if (!loaded)
+                            $("#content-images ul img:first").click();
+                        loaded = true;
+            		}
+                });
+            }
         }
         
         if (space != container) {
@@ -101,7 +130,7 @@ jQuery.fn.swf = function (id) {
     var href = this.attr("href");
     if (href) {
         var swf = new SWFObject(href, "flash-el", "100%", "600", "9", "#ffffff"); 	
-        //swf.setProxy(null, 'flash/swfobject_js_gateway.swf')
+        //swf.setProxy(null, "flash/swfobject_js_gateway.swf")
     	swf.addParam("allowScriptAccess","always");
         swf.addParam("allowFullScreen","true");
         swf.addParam("wmode", "opaque");
@@ -133,30 +162,6 @@ $(document).ready(function () {
     $("#content").click(function () {
         var el = $("input#content-body-toggle");
         if (el.attr("checked")) el.click();
-    });
-    $("#content-images ul").galleria({
-        clickNext : true,
-        history : false,
-        insert : "#the-image",
-        onImage   : function(image,caption,thumb) {
-    		if(! ($.browser.mozilla && navigator.appVersion.indexOf("Win")!=-1) ) {
-    			image.css('display','none').fadeIn(1000);
-    		}
-    		caption.css('display','none').fadeIn(1000);
-			var _li = thumb.parents('li');
-			_li.siblings().children('img.selected').fadeTo(500,0.3);
-			thumb.fadeTo('fast', 1).addClass('selected');
-			image.attr('title','Seuraava kuva >>');
-		},
-		onThumb : function(thumb) {
-			var _li = thumb.parents('li');
-			var _fadeTo = _li.is('.active') ? '1' : '0.3';
-			thumb.css({display:'none',opacity:_fadeTo}).fadeIn(1500);
-			thumb.hover(
-				function() { thumb.fadeTo('fast',1); },
-				function() { _li.not('.active').children('img').fadeTo('fast',0.3); }
-			)
-		}
     });
     $("#content-body-toggle").attr("checked", "checked");
     $("input[name='3d']").attr("checked", "");
