@@ -1,10 +1,32 @@
 var swf;
 
+jQuery.fn.spaceList = function () {
+    var plan = $("#floor-plan");
+    var src = plan.attr("src")
+    plan.attr("_src", src);
+    
+    this.hover(
+        function (){
+            if (!this.id) return;
+            var s = src.replace("all", this.id.split("-")[1]);
+            plan.attr("src", s);
+        }, 
+        function () {
+            if (!this.id) return;
+            plan.attr("src", plan.attr("_src"));
+        }
+    );
+};
+
 jQuery.fn.navigation = function () {
     var both = this.find("h3, ul");
     var h3 = this.find("h3");
     var ul = this.find("ul");
+    var li = ul.find("li");
+    var current = this.attr("class");
+    var el = this;
     var timer = null;
+    
     both.hover(
         function () {
             if (timer) {
@@ -21,6 +43,16 @@ jQuery.fn.navigation = function () {
                     ul.slideUp("fast");
                     timer = null;
                 }, 300);
+        }
+    );
+    li.hover(
+        function () {
+            el.removeClass(current);
+            el.addClass(this.className);
+        },
+        function () {
+           el.removeClass(this.className);
+           el.addClass(current);
         }
     );
 };
@@ -165,6 +197,7 @@ jQuery.fn.toggleTarget = function () {
 
 $(document).ready(function () {
     $("#top-nav").navigation();
+    $("#space-list li").spaceList();
     $("#content-flash a").swf("content-flash");
     //$("#sidebar").sidebar();
     $("#sidebar a").changeSpace();
