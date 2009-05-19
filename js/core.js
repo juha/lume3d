@@ -1,17 +1,26 @@
 var swf;
 
 jQuery.fn.navigation = function () {
+    var both = this.find("h3, ul");
     var h3 = this.find("h3");
     var ul = this.find("ul");
-    h3.toggle(
+    var timer = null;
+    both.hover(
         function () {
-            ul.show();
-            $("body").click(function () {
-                ul.hide();
-            })
+            if (timer) {
+                window.clearTimeout(timer);
+                timer = null;
+            }
+            h3.addClass("hover");
+            ul.slideDown("fast");
         },
         function () {
-            ul.hide();
+            timer = window.setTimeout(
+                function () {
+                    h3.removeClass("hover");
+                    ul.slideUp("fast");
+                    timer = null;
+                }, 300);
         }
     );
 };
